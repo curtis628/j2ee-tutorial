@@ -1,0 +1,43 @@
+# --- Maven / Build ---
+target/
+*.war
+*.ear
+*.jar
+*.class
+
+# --- IDE / Editor ---
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# Eclipse / JBoss Developer Studio
+.project
+.classpath
+.settings/
+bin/
+
+# VS Code
+.vscode/
+
+# --- OS-specific ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# --- Logs / Temp ---
+*.log
+*.out
+*.tmp
+
+# --- WildFly / JBoss runtime artifacts ---
+standalone/data/
+standalone/tmp/
+standalone/log/
+standalone/deployments/*.fail*
+
