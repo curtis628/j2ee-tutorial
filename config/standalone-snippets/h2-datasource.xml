@@ -1,0 +1,24 @@
+<!-- Example H2 datasource snippet for WildFly -->
+<datasources>
+    <datasource jndi-name="java:jboss/datasources/TutorialDS"
+                pool-name="TutorialDS"
+                enabled="true"
+                use-java-context="true">
+        <!--
+        DB_CLOSE_ON_EXIT=FALSE → prevents unexpected shutdown.
+        AUTO_SERVER=TRUE lets multiple processes (WildFly + H2 console) connect safely.
+        -->
+        <connection-url>jdbc:h2:file:/Users/tyler/tmp/h2/tutorialdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE</connection-url>
+        <driver>h2</driver>
+        <security>
+            <user-name>sa</user-name>
+            <password>sa</password>
+        </security>
+    </datasource>
+
+    <drivers>
+        <driver name="h2" module="com.h2database.h2">
+            <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+        </driver>
+    </drivers>
+</datasources>

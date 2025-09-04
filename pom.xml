@@ -37,6 +37,49 @@
       <version>1.1</version>
       <scope>provided</scope>
     </dependency>
+
+    <!-- H2 database (provided by WildFly) -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>1.4.200</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- JPA 2.1 API (Hibernate provides impl in WildFly) -->
+    <dependency>
+      <groupId>org.hibernate.javax.persistence</groupId>
+      <artifactId>hibernate-jpa-2.1-api</artifactId>
+      <version>1.0.2.Final</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- JTA (for transaction annotations) -->
+    <dependency>
+      <groupId>javax.transaction</groupId>
+      <artifactId>javax.transaction-api</artifactId>
+      <version>1.2</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- JSON provider (optional, for REST responses) -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-jackson-provider</artifactId>
+      <version>3.0.19.Final</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Only needed at compile-time; not runtime. -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.32</version>
+      <scope>provided</scope>
+    </dependency>
+
+
+
   </dependencies>
 
   <build>
