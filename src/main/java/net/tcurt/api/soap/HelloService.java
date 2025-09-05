@@ -1,4 +1,4 @@
-package net.tcurt;
+package net.tcurt.api.soap;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
