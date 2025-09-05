@@ -1,4 +1,4 @@
-package net.tcurt;
+package net.tcurt.j2eetutorial;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

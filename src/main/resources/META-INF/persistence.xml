@@ -5,9 +5,9 @@
         <!-- Datasource defined in WildFly -->
         <jta-data-source>java:jboss/datasources/TutorialDS</jta-data-source>
 
-        <class>net.tcurt.entity.Employee</class>
-        <class>net.tcurt.entity.Job</class>
-        <class>net.tcurt.entity.Grade</class>
+        <class>net.tcurt.j2eetutorial.entity.Employee</class>
+        <class>net.tcurt.j2eetutorial.entity.Job</class>
+        <class>net.tcurt.j2eetutorial.entity.Grade</class>
 
         <properties>
             <!-- Let Hibernate create schema automatically -->

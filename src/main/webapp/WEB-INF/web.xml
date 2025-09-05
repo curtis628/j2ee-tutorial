@@ -3,7 +3,7 @@
 
     <servlet>
         <servlet-name>HelloService</servlet-name>
-        <servlet-class>net.tcurt.api.soap.HelloService</servlet-class>
+        <servlet-class>net.tcurt.j2eetutorial.api.soap.HelloService</servlet-class>
     </servlet>
 
     <servlet-mapping>

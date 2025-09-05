@@ -1,4 +1,4 @@
-package net.tcurt.entity;
+package net.tcurt.j2eetutorial.entity;
 
 import lombok.Data;
 

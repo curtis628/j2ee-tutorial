@@ -1,4 +1,4 @@
-package net.tcurt.api.rest;
+package net.tcurt.j2eetutorial.api.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
