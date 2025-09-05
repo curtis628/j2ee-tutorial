@@ -1,8 +1,10 @@
 package net.tcurt.j2eetutorial.entity;
 
 import lombok.Data;
+import org.codehaus.jackson.annotate.JsonBackReference;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,5 +27,6 @@ public class Grade {
     private double maxSalary;
 
     @OneToMany(mappedBy = "grade")
-    private List<Employee> employees;
+    @JsonBackReference
+    private List<Employee> employees = new ArrayList<>();
 }

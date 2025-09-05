@@ -1,6 +1,7 @@
 package net.tcurt.j2eetutorial.entity;
 
 import lombok.Data;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,10 +31,12 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "job_id", nullable = false)
+    @JsonManagedReference // avoid backreference JSON cycle issues
     private Job job;
 
     @ManyToOne
     @JoinColumn(name = "grade_id", nullable = false)
+    @JsonManagedReference
     private Grade grade;
 
     @Column(nullable = false)
