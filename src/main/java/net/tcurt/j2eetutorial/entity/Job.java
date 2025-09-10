@@ -1,10 +1,8 @@
 package net.tcurt.j2eetutorial.entity;
 
 import lombok.Data;
-import org.codehaus.jackson.annotate.JsonBackReference;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,6 +22,5 @@ public class Job {
     private String jobTitle;
 
     @OneToMany(mappedBy = "job")
-    @JsonBackReference
-    private List<Employee> employees = new ArrayList<>();
+    private List<Employee> employees;
 }
