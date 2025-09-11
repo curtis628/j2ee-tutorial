@@ -31,6 +31,13 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.jboss.logging</groupId>
+      <artifactId>jboss-logging</artifactId>
+      <version>3.3.2.Final</version>
+      <scope>provided</scope>
+    </dependency>
+
     <!-- H2 database (provided by WildFly) -->
     <dependency>
       <groupId>com.h2database</groupId>

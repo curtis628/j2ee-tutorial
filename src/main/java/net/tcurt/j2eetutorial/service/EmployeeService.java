@@ -4,20 +4,25 @@ import net.tcurt.j2eetutorial.dto.EmployeeRequest;
 import net.tcurt.j2eetutorial.entity.Employee;
 import net.tcurt.j2eetutorial.entity.Grade;
 import net.tcurt.j2eetutorial.entity.Job;
+import org.jboss.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.ws.rs.NotFoundException;
 import java.util.List;
 
 @Stateless // TODO: learn what this is.
 public class EmployeeService {
+    private static final Logger log = Logger.getLogger(EmployeeService.class);
 
     @PersistenceContext
     private EntityManager em; // TODO: learn what this is.
 
     // ---------- CREATE ----------
     public Employee create(EmployeeRequest request) {
+        log.infof("Creating employee: %s %s", request.getFirstName(), request.getLastName());
+
         Job job = em.find(Job.class, request.getJobId());
         Grade grade = em.find(Grade.class, request.getGradeId());
         if (job == null || grade == null) {
@@ -39,6 +44,7 @@ public class EmployeeService {
 
     // ---------- READ ----------
     public List<Employee> findAll() {
+        log.info("Retrieving all employees...");
         return em.createQuery(
                         "SELECT e FROM Employee e " +
                                 "JOIN FETCH e.job " +
@@ -47,6 +53,7 @@ public class EmployeeService {
     }
 
     public Employee findById(int id) {
+        log.infof("Finding employee with id=%s", id);
         List<Employee> result = em.createQuery(
                         "SELECT e FROM Employee e " +
                                 "JOIN FETCH e.job " +
@@ -59,6 +66,7 @@ public class EmployeeService {
 
     // ---------- UPDATE ----------
     public Employee update(int id, EmployeeRequest request) {
+        log.infof("Replacing employee with id=%s", id);
         Employee employee = em.find(Employee.class, id);
         if (employee == null) {
             throw new IllegalArgumentException("Employee not found with id: " + id);
@@ -83,6 +91,7 @@ public class EmployeeService {
 
     // ---------- DELETE ----------
     public void delete(int id) {
+        log.infof("Deleting employee with id=%s", id);
         Employee employee = em.find(Employee.class, id);
         if (employee == null) {
             throw new IllegalArgumentException("Employee not found with id: " + id);
