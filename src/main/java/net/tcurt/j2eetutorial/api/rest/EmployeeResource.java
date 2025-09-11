@@ -31,6 +31,9 @@ public class EmployeeResource {
     @Path("/{id}")
     public EmployeeResponse getEmployeeById(@PathParam("id") int id) {
         Employee employee =  employeeService.findById(id);
+        if (employee == null) {
+            throw new NotFoundException("Employee not found with id: " + id);
+        }
         return EmployeeMapper.toResponse(employee);
     }
 

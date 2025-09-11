@@ -61,6 +61,19 @@ public class EmployeeApiTest {
     }
 
     @Test
+    public void testGetEmployeeByBadIdGives404() {
+        int employeeId = 9999; // employee id doesn't exist
+
+        given()
+                .when()
+                .get("/employees/{id}", employeeId)
+                .then()
+                .statusCode(404)
+                .contentType(ContentType.JSON)
+                .body("error", equalTo("Employee not found with id: " + employeeId));
+    }
+
+    @Test
     public void testGetEmployeesListGrowsAfterPost() {
         // 1. Initial list size
         List<?> beforeList = given()
