@@ -9,7 +9,6 @@ import org.jboss.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.ws.rs.NotFoundException;
 import java.util.List;
 
 @Stateless // TODO: learn what this is.

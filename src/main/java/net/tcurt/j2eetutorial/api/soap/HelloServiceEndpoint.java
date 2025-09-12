@@ -4,8 +4,12 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
-@WebService
-public class HelloService {
+@WebService(
+        serviceName = "HelloService",
+        portName = "HelloServicePort",
+        targetNamespace = "http://soap.j2eetutorial.tcurt.net/"
+)
+public class HelloServiceEndpoint {
 
     @WebMethod
     public String sayHello(@WebParam(name = "name") String name) {
