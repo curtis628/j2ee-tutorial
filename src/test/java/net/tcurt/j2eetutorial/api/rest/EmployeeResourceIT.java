@@ -17,7 +17,7 @@ import net.tcurt.j2eetutorial.dto.EmployeeRequest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class EmployeeApiTest {
+public class EmployeeResourceIT {
     private static final String BASE_URI = "http://localhost";
     private static final int PORT = 8080;
     private static final String BASE_PATH = "/jboss-tutorial/api";
