@@ -5,45 +5,14 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assume.assumeTrue;
 
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
+import net.tcurt.j2eetutorial.api.TutorialITBase;
 import net.tcurt.j2eetutorial.dto.EmployeeRequest;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class EmployeeResourceIT {
-    private static final String BASE_URI = "http://localhost";
-    private static final int PORT = 8080;
-    private static final String BASE_PATH = "/jboss-tutorial/api";
-
-    private static boolean isServerAvailable() {
-        try {
-            URL url = new URL(String.format("%s:%d%s/employees", BASE_URI, PORT, BASE_PATH));
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setConnectTimeout(1000);
-            conn.setReadTimeout(1000);
-            conn.setRequestMethod("GET");
-            int code = conn.getResponseCode();
-            return code >= 200 && code < 500; // consider "available" if it responds
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    @BeforeClass
-    public static void setup() {
-        RestAssured.baseURI = BASE_URI;
-        RestAssured.port = PORT;
-        RestAssured.basePath = BASE_PATH;
-
-        assumeTrue("WildFly not running, skipping all tests", isServerAvailable());
-    }
+public class EmployeeResourceIT extends TutorialITBase {
 
     @Test
     public void testGetEmployeeById() {
@@ -123,7 +92,5 @@ public class EmployeeResourceIT {
                 .delete("/employees/{id}", newId)
                 .then()
                 .statusCode(204);
-
-        // 5. TODO 404
     }
 }

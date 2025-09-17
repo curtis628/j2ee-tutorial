@@ -1,6 +1,8 @@
 package net.tcurt.j2eetutorial.api.soap;
 
+import net.tcurt.j2eetutorial.api.soap.exception.EmployeeNotFoundException;
 import net.tcurt.j2eetutorial.dto.EmployeeResponse;
+import net.tcurt.j2eetutorial.entity.Employee;
 import net.tcurt.j2eetutorial.service.EmployeeService;
 import net.tcurt.j2eetutorial.mapper.EmployeeMapper;
 
@@ -29,8 +31,12 @@ public class EmployeeServiceEndpoint {
     }
 
     @WebMethod
-    public EmployeeResponse getEmployeeById(
-            @WebParam(name = "id") int id) {
-        return EmployeeMapper.toResponse(employeeService.findById(id));
+    public EmployeeResponse getEmployeeById(@WebParam(name = "id") int id)
+            throws EmployeeNotFoundException {
+        Employee employee = employeeService.findById(id);
+        if (employee == null) {
+            throw new EmployeeNotFoundException("Employee not found with id: " + id, id);
+        }
+        return EmployeeMapper.toResponse(employee);
     }
 }

@@ -76,6 +76,12 @@
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.26.3</version> <!-- latest as of Sept 2025 -->
+      <scope>test</scope>
+    </dependency>
 
   </dependencies>
 
@@ -102,6 +108,38 @@
               <goal>integration-test</goal>
               <goal>verify</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxws-maven-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <id>wsimport-employee</id>
+            <goals>
+              <goal>wsimport</goal>
+            </goals>
+            <phase>generate-sources</phase>
+            <configuration>
+              <!-- WSDL location -->
+              <wsdlUrls>
+                <wsdlUrl>http://localhost:8080/jboss-tutorial/EmployeeService?wsdl</wsdlUrl>
+              </wsdlUrls>
+
+              <!-- Package for generated classes -->
+              <packageName>net.tcurt.j2eetutorial.client.soap</packageName>
+
+              <!-- Where generated classes go -->
+              <sourceDestDir>${project.build.directory}/generated-sources/wsimport</sourceDestDir>
+
+              <!-- Keep .java sources (not just .class) -->
+              <keep>true</keep>
+
+              <!-- Optional: overwrite if WSDL changes -->
+              <xnocompile>true</xnocompile>
+            </configuration>
           </execution>
         </executions>
       </plugin>
